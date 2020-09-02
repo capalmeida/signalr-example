@@ -1,4 +1,4 @@
-# SignalR - Chill and Hack with Joel Demo
+# SignalR - Example with .net core backend and vuejs client
 
 ## Javascript Client Packages:
 
