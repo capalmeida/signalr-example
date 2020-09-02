@@ -46,11 +46,24 @@ export default {
     }
   },
   mounted() {
+    connection.on("AddedTask", task => {
+      this.tasks.push(task);
+    })
 
+    connection.on("TaskIsDone", task => {
+      this.tasks.filter(x => x.id == task.id)[0].done = task.done
+    })
   },
   methods: {
     addTask: function() {
-
+      this.toggle = true;
+      
+      connection.invoke("AddTask", { 
+          id: this.currentIds,
+          description: 'Starting laundry task ${this.currentIds}',
+          done: false 
+      })
+      this.currentIds++;
     }
   }
 }
